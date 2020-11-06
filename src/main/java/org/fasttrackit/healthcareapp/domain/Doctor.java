@@ -1,12 +1,10 @@
 package org.fasttrackit.healthcareapp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class User {
+public class Doctor {
 
     @Id
     @GeneratedValue
@@ -17,15 +15,9 @@ public class User {
     @NotNull
     private String lastName;
 
-    public String getFisaDeConsult() {
-        return fisaDeConsult;
-    }
-
-    public void setFisaDeConsult(String fisaDeConsult) {
-        this.fisaDeConsult = fisaDeConsult;
-    }
-
-    private String fisaDeConsult;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId
+    private User user;
 
     public long getId() {
         return id;
@@ -53,11 +45,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Doctor{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", fisaDeConsult='" + fisaDeConsult + '\'' +
                 '}';
     }
 }
