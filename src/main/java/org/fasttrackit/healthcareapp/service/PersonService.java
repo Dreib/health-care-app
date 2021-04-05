@@ -6,6 +6,7 @@ import org.fasttrackit.healthcareapp.persistence.PersonRepository;
 import org.fasttrackit.healthcareapp.transfer.person.SavePersonRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +40,19 @@ public class PersonService {
                 .orElseThrow(() -> new ResourceNotFoundException("Person " + cnp + " does not exist"));
     }
 
+    public Person updatePerson(int cnp, SavePersonRequest request) {
+        LOGGER.info("Updating person {}: {}", cnp, request);
 
+        Person existingPerson = getPerson(cnp);
+
+        BeanUtils.copyProperties(request, existingPerson);
+
+        return personRepository.save(existingPerson);
+    }
+
+    public void deletePerson(int cnp) {
+        LOGGER.info("Removing person {}", cnp);
+        personRepository.deleteById(cnp);
+    }
 
 }
