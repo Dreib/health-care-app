@@ -5,9 +5,19 @@ import javax.validation.constraints.NotNull;
 public class SavePersonRequest {
 
     @NotNull
+    private int cnp;
+    @NotNull
     private String nume;
     @NotNull
     private String prenume;
+
+    public int getCnp() {
+        return cnp;
+    }
+
+    public void setCnp(int cnp) {
+        this.cnp = cnp;
+    }
 
     public String getNume() {
         return nume;
