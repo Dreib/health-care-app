@@ -1,7 +1,9 @@
 package org.fasttrackit.healthcareapp.service;
 
 import org.apache.velocity.exception.ResourceNotFoundException;
+import org.fasttrackit.healthcareapp.domain.History;
 import org.fasttrackit.healthcareapp.domain.Person;
+import org.fasttrackit.healthcareapp.persistence.HistoryRepository;
 import org.fasttrackit.healthcareapp.persistence.PersonRepository;
 import org.fasttrackit.healthcareapp.transfer.person.SavePersonRequest;
 import org.slf4j.Logger;
@@ -16,10 +18,12 @@ public class PersonService {
     private static final Logger LOGGER = LoggerFactory.getLogger(PersonService.class);
 
     private final PersonRepository personRepository;
+    private final HistoryRepository historyRepository;
 
     @Autowired
-    public PersonService(PersonRepository personRepository) {
+    public PersonService(PersonRepository personRepository, HistoryRepository historyRepository) {
         this.personRepository = personRepository;
+        this.historyRepository = historyRepository;
     }
 
     public Person addPerson(SavePersonRequest request) {
@@ -32,6 +36,14 @@ public class PersonService {
 
         return personRepository.save(person);
     }
+
+    /*
+    public History createHistory(Person person) {
+        LOGGER.info("Creating history for {}", person.getCnp());
+
+
+
+    }*/
 
     public Person getPerson(int cnp) {
         LOGGER.info("Retrieving person {}", cnp);

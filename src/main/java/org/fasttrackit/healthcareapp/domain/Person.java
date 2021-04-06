@@ -7,6 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "persoana")
+@SecondaryTable(name = "istoric", pkJoinColumns = @PrimaryKeyJoinColumn (name = "person_cnp"))
 public class Person implements Serializable {
 
     @Id
@@ -22,6 +23,17 @@ public class Person implements Serializable {
     private int etaj;
     private int apartament;
     private String tip;
+
+    @Column(name = "person_cnp", table = "istoric")
+    private int person_cnp;
+
+    public int getPerson_cnp() {
+        return person_cnp;
+    }
+
+    public void setPerson_cnp(int person_cnp) {
+        this.person_cnp = person_cnp;
+    }
 
     @OneToMany(mappedBy = "person_cnp", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Appointment> appointments = new HashSet<>();

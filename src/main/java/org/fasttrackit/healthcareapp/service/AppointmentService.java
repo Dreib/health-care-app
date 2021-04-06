@@ -2,8 +2,9 @@ package org.fasttrackit.healthcareapp.service;
 
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.fasttrackit.healthcareapp.domain.Appointment;
-import org.fasttrackit.healthcareapp.domain.Person;
+import org.fasttrackit.healthcareapp.domain.History;
 import org.fasttrackit.healthcareapp.persistence.AppointmentRepository;
+import org.fasttrackit.healthcareapp.persistence.HistoryRepository;
 import org.fasttrackit.healthcareapp.transfer.appointment.GetAppointmentRequest;
 import org.fasttrackit.healthcareapp.transfer.appointment.SaveAppointmentRequest;
 import org.slf4j.Logger;
@@ -13,9 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.sql.Date;
-import java.sql.Time;
 
 @Service
 public class AppointmentService {
