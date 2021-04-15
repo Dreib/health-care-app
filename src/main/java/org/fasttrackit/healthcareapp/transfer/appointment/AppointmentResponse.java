@@ -1,14 +1,12 @@
 package org.fasttrackit.healthcareapp.transfer.appointment;
 
-import org.fasttrackit.healthcareapp.domain.Person;
-
 import java.sql.Date;
 import java.sql.Time;
 
 public class AppointmentResponse {
 
     private long id;
-    private Person person_cnp;
+    private long personcnp;
     private Date data;
     private Time ora;
     private String observatie;
@@ -21,12 +19,12 @@ public class AppointmentResponse {
         this.id = id;
     }
 
-    public Person getPerson_cnp() {
-        return person_cnp;
+    public long getPersoncnp() {
+        return personcnp;
     }
 
-    public void setPerson_cnp(Person person_cnp) {
-        this.person_cnp = person_cnp;
+    public void setPersoncnp(long personcnp) {
+        this.personcnp = personcnp;
     }
 
     public Date getData() {
@@ -57,7 +55,7 @@ public class AppointmentResponse {
     public String toString() {
         return "AppointmentResponse{" +
                 "id=" + id +
-                ", person_cnp=" + person_cnp +
+                ", personcnp=" + personcnp +
                 ", data=" + data +
                 ", ora=" + ora +
                 ", observatie='" + observatie + '\'' +

@@ -5,8 +5,6 @@ import org.fasttrackit.healthcareapp.service.AppointmentService;
 import org.fasttrackit.healthcareapp.transfer.appointment.GetAppointmentRequest;
 import org.fasttrackit.healthcareapp.transfer.appointment.SaveAppointmentRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,33 +29,21 @@ public class AppointmentController {
         return new ResponseEntity<>(appointment, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Appointment> getAppointment(@PathVariable long id) {
-        Appointment appointment = appointmentService.getAppointment(id);
-        return new ResponseEntity<>(appointment, HttpStatus.OK);
-    }
-
     @GetMapping
-    public ResponseEntity<Page<Appointment>> getAppointmentByPerson(@RequestBody @Valid GetAppointmentRequest request, Pageable pageable) {
-        Page<Appointment> appointments = appointmentService.getAppointmentByPerson(request, pageable);
-        return new ResponseEntity<>(appointments, HttpStatus.OK);
-    }
-
-    @GetMapping
-    public ResponseEntity<Page<Appointment>> getAppointments(@RequestBody @Valid GetAppointmentRequest request, Pageable pageable) {
-        Page<Appointment> appointments = appointmentService.getAppointments(request, pageable);
-        return new ResponseEntity<>(appointments, HttpStatus.OK);
+    public ResponseEntity<Appointment> getAppointment(@RequestBody @Valid GetAppointmentRequest request) {
+        Appointment appointment = appointmentService.getAppointment(request.getPersoncnp());
+        return ResponseEntity.ok(appointment);
     }
 
     @PutMapping
-    public ResponseEntity<Appointment> updatePerson(@PathVariable long id, @RequestBody @Valid GetAppointmentRequest request) {
-        Appointment appointment = appointmentService.updateAppointment(request, id);
+    public ResponseEntity<Appointment> updateAppointment(@RequestBody @Valid SaveAppointmentRequest request) {
+        Appointment appointment = appointmentService.updateAppointment(request);
         return ResponseEntity.ok(appointment);
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deletePerson(@PathVariable long id) {
-        appointmentService.deleteAppointment(id);
+    public ResponseEntity<Void> deleteAppointment(Long personcnp) {
+        appointmentService.deleteAppointment(personcnp);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

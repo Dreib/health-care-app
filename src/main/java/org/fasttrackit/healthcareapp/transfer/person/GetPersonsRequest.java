@@ -1,32 +1,13 @@
 package org.fasttrackit.healthcareapp.transfer.person;
 
-import javax.validation.constraints.NotNull;
+public class GetPersonsRequest {
 
-public class SavePersonRequest {
-
-    @NotNull
-    private long cnp;
-    @NotNull
     private String nume;
-    @NotNull
     private String prenume;
     private String judet;
     private String localitate;
     private String strada;
-    private int numar;
-    private String bloc;
-    private int etaj;
-    private int apartament;
-    @NotNull
     private String tip;
-
-    public long getCnp() {
-        return cnp;
-    }
-
-    public void setCnp(long cnp) {
-        this.cnp = cnp;
-    }
 
     public String getNume() {
         return nume;
@@ -68,38 +49,6 @@ public class SavePersonRequest {
         this.strada = strada;
     }
 
-    public int getNumar() {
-        return numar;
-    }
-
-    public void setNumar(int numar) {
-        this.numar = numar;
-    }
-
-    public String getBloc() {
-        return bloc;
-    }
-
-    public void setBloc(String bloc) {
-        this.bloc = bloc;
-    }
-
-    public int getEtaj() {
-        return etaj;
-    }
-
-    public void setEtaj(int etaj) {
-        this.etaj = etaj;
-    }
-
-    public int getApartament() {
-        return apartament;
-    }
-
-    public void setApartament(int apartament) {
-        this.apartament = apartament;
-    }
-
     public String getTip() {
         return tip;
     }
@@ -110,17 +59,12 @@ public class SavePersonRequest {
 
     @Override
     public String toString() {
-        return "SavePersonRequest{" +
-                "cnp=" + cnp +
-                ", nume='" + nume + '\'' +
+        return "GetPersonsRequest{" +
+                "nume='" + nume + '\'' +
                 ", prenume='" + prenume + '\'' +
                 ", judet='" + judet + '\'' +
                 ", localitate='" + localitate + '\'' +
                 ", strada='" + strada + '\'' +
-                ", numar=" + numar +
-                ", bloc='" + bloc + '\'' +
-                ", etaj=" + etaj +
-                ", apartament=" + apartament +
                 ", tip='" + tip + '\'' +
                 '}';
     }

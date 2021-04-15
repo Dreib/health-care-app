@@ -7,11 +7,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "persoana")
-@SecondaryTable(name = "istoric", pkJoinColumns = @PrimaryKeyJoinColumn (name = "person_cnp"))
-public class Person implements Serializable {
+//@SecondaryTable(name = "istoric", pkJoinColumns = @PrimaryKeyJoinColumn (name = "person_cnp"))
+public class Person {
 
     @Id
-    private int cnp;
+    private long cnp;
 
     private String nume;
     private String prenume;
@@ -24,25 +24,14 @@ public class Person implements Serializable {
     private int apartament;
     private String tip;
 
-    @Column(name = "person_cnp", table = "istoric")
-    private int person_cnp;
-
-    public int getPerson_cnp() {
-        return person_cnp;
-    }
-
-    public void setPerson_cnp(int person_cnp) {
-        this.person_cnp = person_cnp;
-    }
-
-    @OneToMany(mappedBy = "person_cnp", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "personcnp", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Appointment> appointments = new HashSet<>();
 
-    public int getCnp() {
+    public long getCnp() {
         return cnp;
     }
 
-    public void setCnp(int cnp) {
+    public void setCnp(long cnp) {
         this.cnp = cnp;
     }
 
@@ -174,7 +163,7 @@ public class Person implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = cnp;
+        int result = (int) (cnp ^ (cnp >>> 32));
         result = 31 * result + (nume != null ? nume.hashCode() : 0);
         result = 31 * result + (prenume != null ? prenume.hashCode() : 0);
         result = 31 * result + (judet != null ? judet.hashCode() : 0);

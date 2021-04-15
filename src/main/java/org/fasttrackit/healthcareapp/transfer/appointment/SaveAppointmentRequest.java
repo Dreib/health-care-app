@@ -1,23 +1,24 @@
 package org.fasttrackit.healthcareapp.transfer.appointment;
 
-import org.fasttrackit.healthcareapp.domain.Person;
-
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.sql.Time;
 
 public class SaveAppointmentRequest {
 
-    private Person person_cnp;
+    @NotNull
+    private long personcnp;
+
     private Date data;
     private Time ora;
     private String observatie;
 
-    public Person getPerson_cnp() {
-        return person_cnp;
+    public long getPersoncnp() {
+        return personcnp;
     }
 
-    public void setPerson_cnp(Person person_cnp) {
-        this.person_cnp = person_cnp;
+    public void setPersoncnp(long personcnp) {
+        this.personcnp = personcnp;
     }
 
     public Date getData() {
@@ -47,7 +48,7 @@ public class SaveAppointmentRequest {
     @Override
     public String toString() {
         return "SaveAppointmentRequest{" +
-                "person_cnp=" + person_cnp +
+                "personcnp=" + personcnp +
                 ", data=" + data +
                 ", ora=" + ora +
                 ", observatie='" + observatie + '\'' +

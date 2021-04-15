@@ -28,25 +28,21 @@ public class PersonController {
         return new ResponseEntity<>(person, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{cnp}")
-    public ResponseEntity<Person> getPerson(@PathVariable int cnp) {
+    @GetMapping
+    public ResponseEntity<Person> getPerson(Long cnp) {
         Person person = personService.getPerson(cnp);
         return ResponseEntity.ok(person);
     }
 
-    @PutMapping("/{cnp}")
-    public ResponseEntity<Person> updatePerson(@PathVariable int cnp, @RequestBody @Valid SavePersonRequest request) {
-        Person person = personService.updatePerson(cnp, request);
+    @PutMapping
+    public ResponseEntity<Person> updatePerson(@RequestBody @Valid SavePersonRequest request) {
+        Person person = personService.updatePerson(request);
         return ResponseEntity.ok(person);
     }
 
-    @DeleteMapping("/{cnp}")
-    public ResponseEntity<Void> deletePerson(@PathVariable int cnp) {
+    @DeleteMapping
+    public ResponseEntity<Void> deletePerson(Long cnp) {
         personService.deletePerson(cnp);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
-
-
-
-

@@ -8,16 +8,19 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "programari")
-public class Appointment implements Serializable {
+public class Appointment {
 
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
+    /*
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_cnp")
-    private Person person_cnp;
+    private Person person;*/
+
+    @NotNull
+    private long personcnp;
 
     private Date data;
     private Time ora;
@@ -27,8 +30,16 @@ public class Appointment implements Serializable {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public long getPersoncnp() {
+        return personcnp;
+    }
+
+    public void setPersoncnp(long personcnp) {
+        this.personcnp = personcnp;
     }
 
     public Date getData() {
@@ -59,7 +70,7 @@ public class Appointment implements Serializable {
     public String toString() {
         return "Appointment{" +
                 "id=" + id +
-                ", cnp=" + person_cnp +
+                ", cnp=" + personcnp +
                 ", data=" + data +
                 ", ora=" + ora +
                 ", observatie='" + observatie + '\'' +
