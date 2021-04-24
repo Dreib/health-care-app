@@ -1,13 +1,11 @@
 package org.fasttrackit.healthcareapp.domain;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "persoana")
-//@SecondaryTable(name = "istoric", pkJoinColumns = @PrimaryKeyJoinColumn (name = "person_cnp"))
 public class Person {
 
     @Id

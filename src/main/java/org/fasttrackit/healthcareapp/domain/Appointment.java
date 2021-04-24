@@ -2,7 +2,6 @@ package org.fasttrackit.healthcareapp.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.sql.Time;
 import java.sql.Date;
 
@@ -12,12 +11,7 @@ public class Appointment {
 
     @Id
     @GeneratedValue
-    private int id;
-
-    /*
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Person person;*/
+    private long id;
 
     @NotNull
     private long personcnp;
@@ -30,8 +24,8 @@ public class Appointment {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(long id) {
+       this.id = id;
     }
 
     public long getPersoncnp() {

@@ -28,8 +28,8 @@ public class PersonController {
         return new ResponseEntity<>(person, HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<Person> getPerson(Long cnp) {
+    @GetMapping("/{cnp}")
+    public ResponseEntity<Person> getPerson(@PathVariable long cnp) {
         Person person = personService.getPerson(cnp);
         return ResponseEntity.ok(person);
     }
@@ -40,8 +40,8 @@ public class PersonController {
         return ResponseEntity.ok(person);
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deletePerson(Long cnp) {
+    @DeleteMapping("/{cnp}")
+    public ResponseEntity<Void> deletePerson(@PathVariable long cnp) {
         personService.deletePerson(cnp);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

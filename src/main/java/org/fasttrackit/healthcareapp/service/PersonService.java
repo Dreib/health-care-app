@@ -45,7 +45,7 @@ public class PersonService {
         return personRepository.save(person);
     }
 
-    public Person getPerson(Long cnp) {
+    public Person getPerson(long cnp) {
         LOGGER.info("Retrieving person {}", cnp);
 
         Person personFound = new Person();
@@ -76,9 +76,9 @@ public class PersonService {
         return personRepository.save(existingPerson);
     }
 
-    public void deletePerson(Long cnp) {
+    public void deletePerson(long cnp) {
         LOGGER.info("Removing person {}", cnp);
-        personRepository.deletePersonByCnp(cnp);
+        personRepository.deleteById(cnp);
     }
 
 }

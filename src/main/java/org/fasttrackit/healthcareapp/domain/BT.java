@@ -1,26 +1,36 @@
-package org.fasttrackit.healthcareapp.transfer.appointment;
+package org.fasttrackit.healthcareapp.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Date;
 
-public class AppointmentTypeBt {
+@Entity
+@Table(name = "bt")
+public class BT {
 
-    private long bt_id;
+    @Id
+    @GeneratedValue
+    private long id;
+
+    private long cnp;
+
     private Date data_trimitere;
     private String judet;
     private String localitate;
     private String unitate_sanitara;
-    private long cnp;
     private String catre;
     private String diagnostic_prezumtiv;
     private String motivul_trimiterii;
-    private String investigatii_tratament;
+    private String investigatii_tratamente;
 
-    public long getBt_id() {
-        return bt_id;
+    public long getId() {
+        return id;
     }
 
-    public void setBt_id(long bt_id) {
-        this.bt_id = bt_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Date getData_trimitere() {
@@ -87,18 +97,18 @@ public class AppointmentTypeBt {
         this.motivul_trimiterii = motivul_trimiterii;
     }
 
-    public String getInvestigatii_tratament() {
-        return investigatii_tratament;
+    public String getInvestigatii_tratamente() {
+        return investigatii_tratamente;
     }
 
-    public void setInvestigatii_tratament(String investigatii_tratament) {
-        this.investigatii_tratament = investigatii_tratament;
+    public void setInvestigatii_tratamente(String investigatii_tratamente) {
+        this.investigatii_tratamente = investigatii_tratamente;
     }
 
     @Override
     public String toString() {
-        return "AppointmentTypeBt{" +
-                "bt_id=" + bt_id +
+        return "BT{" +
+                "id=" + id +
                 ", data_trimitere=" + data_trimitere +
                 ", judet='" + judet + '\'' +
                 ", localitate='" + localitate + '\'' +
@@ -107,7 +117,7 @@ public class AppointmentTypeBt {
                 ", catre='" + catre + '\'' +
                 ", diagnostic_prezumtiv='" + diagnostic_prezumtiv + '\'' +
                 ", motivul_trimiterii='" + motivul_trimiterii + '\'' +
-                ", investigatii_tratament='" + investigatii_tratament + '\'' +
+                ", investigatii_tratamente='" + investigatii_tratamente + '\'' +
                 '}';
     }
 }

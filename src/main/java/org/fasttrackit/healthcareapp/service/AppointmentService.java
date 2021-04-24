@@ -41,7 +41,7 @@ public class AppointmentService {
     }
 
     public Appointment getAppointment(long personcnp) {
-        LOGGER.info("Retrieving appointment {}", personcnp);
+        LOGGER.info("Retrieving appointment for {}", personcnp);
 
         Appointment appointmentFound = new Appointment();
 
@@ -97,9 +97,9 @@ public class AppointmentService {
         return appointmentRepository.save(existingAppointment);
     }
 
-    public void deleteAppointment(Long personcnp) {
-        LOGGER.info("Removing appointment for {}", personcnp);
-        appointmentRepository.deleteAppointmentByPersoncnp(personcnp);
+    public void deleteAppointment(long id) {
+        LOGGER.info("Removing appointment {}", id);
+        appointmentRepository.deleteById(id);
     }
 
     private AppointmentResponse mapAppointmentResponse(Appointment appointment) {

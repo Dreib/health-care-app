@@ -1,22 +1,40 @@
-package org.fasttrackit.healthcareapp.transfer.appointment;
+package org.fasttrackit.healthcareapp.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Date;
 
-public class AppointmentTypeCcm {
+@Entity
+@Table(name = "ccm")
+public class CCM {
 
-    private long ccm_id;
-    private String serie;
-    private int numar;
-    private Date v_date_start;
-    private Date v_date_end;
+    @Id
+    @GeneratedValue
+    private long id;
+
     private long cnp;
 
-    public long getCcm_id() {
-        return ccm_id;
+    private String serie;
+    private String numar;
+    private Date v_date_start;
+    private Date v_date_end;
+
+    public long getId() {
+        return id;
     }
 
-    public void setCcm_id(long ccm_id) {
-        this.ccm_id = ccm_id;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getCnp() {
+        return cnp;
+    }
+
+    public void setCnp(long cnp) {
+        this.cnp = cnp;
     }
 
     public String getSerie() {
@@ -27,11 +45,11 @@ public class AppointmentTypeCcm {
         this.serie = serie;
     }
 
-    public int getNumar() {
+    public String getNumar() {
         return numar;
     }
 
-    public void setNumar(int numar) {
+    public void setNumar(String numar) {
         this.numar = numar;
     }
 
@@ -51,23 +69,15 @@ public class AppointmentTypeCcm {
         this.v_date_end = v_date_end;
     }
 
-    public long getCnp() {
-        return cnp;
-    }
-
-    public void setCnp(long cnp) {
-        this.cnp = cnp;
-    }
-
     @Override
     public String toString() {
-        return "AppointmentTypeCcm{" +
-                "ccm_id=" + ccm_id +
+        return "CCM{" +
+                "ccm_id=" + id +
+                ", cnp=" + cnp +
                 ", serie='" + serie + '\'' +
-                ", numar=" + numar +
+                ", numar='" + numar + '\'' +
                 ", v_date_start=" + v_date_start +
                 ", v_date_end=" + v_date_end +
-                ", cnp=" + cnp +
                 '}';
     }
 }

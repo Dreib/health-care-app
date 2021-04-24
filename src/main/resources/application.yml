@@ -4,6 +4,6 @@ spring:
     hibernate.ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL8Dialect
   datasource:
-    url: jdbc:mysql://localhost:3306/health_care_app
+    url: jdbc:mysql://localhost:3306/health-care-app
     username: health-care-app
     password: health-care-app
