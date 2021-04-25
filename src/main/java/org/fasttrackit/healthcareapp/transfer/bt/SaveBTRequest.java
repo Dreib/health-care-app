@@ -5,13 +5,11 @@ import java.sql.Date;
 public class SaveBTRequest {
 
     private long id;
-
-    private long cnp;
-
     private Date data_trimitere;
     private String judet;
     private String localitate;
     private String unitate_sanitara;
+    private long cnp;
     private String catre;
     private String diagnostic_prezumtiv;
     private String motivul_trimiterii;
@@ -100,11 +98,12 @@ public class SaveBTRequest {
     @Override
     public String toString() {
         return "SaveBTRequest{" +
-                "cnp=" + cnp +
+                "id=" + id +
                 ", data_trimitere=" + data_trimitere +
                 ", judet='" + judet + '\'' +
                 ", localitate='" + localitate + '\'' +
                 ", unitate_sanitara='" + unitate_sanitara + '\'' +
+                ", cnp=" + cnp +
                 ", catre='" + catre + '\'' +
                 ", diagnostic_prezumtiv='" + diagnostic_prezumtiv + '\'' +
                 ", motivul_trimiterii='" + motivul_trimiterii + '\'' +

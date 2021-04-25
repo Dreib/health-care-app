@@ -1,15 +1,24 @@
 package org.fasttrackit.healthcareapp.service;
 
 import org.fasttrackit.healthcareapp.domain.CCM;
+import org.fasttrackit.healthcareapp.domain.Person;
 import org.fasttrackit.healthcareapp.exception.ResourceNotFoundException;
 import org.fasttrackit.healthcareapp.persistence.CCMRepository;
+import org.fasttrackit.healthcareapp.transfer.ccm.GetCCMRequest;
 import org.fasttrackit.healthcareapp.transfer.ccm.SaveCCMRequest;
+import org.fasttrackit.healthcareapp.transfer.person.GetPersonsRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CCMService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(BTService.class);
 
     private final CCMRepository ccmRepository;
 
@@ -21,6 +30,7 @@ public class CCMService {
     public CCM createCCM(SaveCCMRequest request) {
         CCM ccm = new CCM();
 
+        ccm.setId(request.getId());
         ccm.setCnp(request.getCnp());
         ccm.setNumar(request.getNumar());
         ccm.setSerie(request.getSerie());
@@ -34,6 +44,11 @@ public class CCMService {
         return ccmRepository.findById(id)
                 //lambda expression
                 .orElseThrow(() -> new ResourceNotFoundException("User " + id + " does not exist."));
+    }
+
+    public List<CCM> getConcedii(GetCCMRequest getCCMRequest) {
+        LOGGER.info("Retrieving concedii {}", getCCMRequest);
+        return ccmRepository.findAll();
     }
 
     public CCM updateCCM(SaveCCMRequest request) {

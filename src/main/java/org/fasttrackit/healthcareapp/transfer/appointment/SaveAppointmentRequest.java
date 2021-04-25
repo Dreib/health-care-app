@@ -6,12 +6,22 @@ import java.sql.Time;
 
 public class SaveAppointmentRequest {
 
+    private int id;
+
     @NotNull
     private long personcnp;
 
     private Date data;
     private Time ora;
     private String observatie;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public long getPersoncnp() {
         return personcnp;
@@ -48,7 +58,8 @@ public class SaveAppointmentRequest {
     @Override
     public String toString() {
         return "SaveAppointmentRequest{" +
-                "personcnp=" + personcnp +
+                "id=" + id +
+                ", personcnp=" + personcnp +
                 ", data=" + data +
                 ", ora=" + ora +
                 ", observatie='" + observatie + '\'' +

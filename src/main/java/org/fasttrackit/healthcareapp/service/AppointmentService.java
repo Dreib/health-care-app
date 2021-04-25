@@ -2,10 +2,12 @@ package org.fasttrackit.healthcareapp.service;
 
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.fasttrackit.healthcareapp.domain.Appointment;
+import org.fasttrackit.healthcareapp.domain.Person;
 import org.fasttrackit.healthcareapp.persistence.AppointmentRepository;
 import org.fasttrackit.healthcareapp.transfer.appointment.AppointmentResponse;
 import org.fasttrackit.healthcareapp.transfer.appointment.GetAppointmentRequest;
 import org.fasttrackit.healthcareapp.transfer.appointment.SaveAppointmentRequest;
+import org.fasttrackit.healthcareapp.transfer.person.GetPersonsRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -32,6 +34,7 @@ public class AppointmentService {
         LOGGER.info("Adding appointment {}", request);
 
         Appointment appointment = new Appointment();
+        appointment.setId(request.getId());
         appointment.setPersoncnp(request.getPersoncnp());
         appointment.setData(request.getData());
         appointment.setOra(request.getOra());
@@ -54,37 +57,9 @@ public class AppointmentService {
         return appointmentFound;
     }
 
-    public AppointmentResponse getAppointmentResponse(long personcnp) {
-        Appointment appointment = getAppointment(personcnp);
-        return mapAppointmentResponse(appointment);
-    }
-
-    public Page<AppointmentResponse> getAppointments(GetAppointmentRequest request, Pageable pageable) {
-        LOGGER.info("Retrieving appointments: {}", request);
-
-        Appointment exampleAppointment = new Appointment();
-        exampleAppointment.setId(request.getId());
-        exampleAppointment.setPersoncnp(request.getPersoncnp());
-        exampleAppointment.setData(request.getData());
-        exampleAppointment.setOra(request.getOra());
-        exampleAppointment.setObservatie(request.getObservatie());
-
-        Example<Appointment> example = Example.of(exampleAppointment,
-                ExampleMatcher.matchingAny()
-                    .withMatcher("personcnp", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
-                    .withMatcher("data", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
-                    .withMatcher("ora", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase()));
-
-        Page<Appointment> appointmentsPage = appointmentRepository.findAll(example, pageable);
-
-        List<AppointmentResponse> appointmentDTOs = new ArrayList<>();
-
-        for(Appointment appointment: appointmentsPage.getContent()) {
-            AppointmentResponse appointmentResponse = mapAppointmentResponse(appointment);
-            appointmentDTOs.add(appointmentResponse);
-        }
-
-        return new PageImpl<>(appointmentDTOs, pageable, appointmentsPage.getTotalElements());
+    public List<Appointment> getAppointments(GetAppointmentRequest request) {
+        LOGGER.info("Retrieving appointments {}", request);
+        return appointmentRepository.findAll();
     }
 
     public Appointment updateAppointment(SaveAppointmentRequest request) {

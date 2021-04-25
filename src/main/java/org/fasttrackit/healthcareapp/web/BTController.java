@@ -1,7 +1,10 @@
 package org.fasttrackit.healthcareapp.web;
 
+import org.fasttrackit.healthcareapp.domain.Appointment;
 import org.fasttrackit.healthcareapp.domain.BT;
 import org.fasttrackit.healthcareapp.service.BTService;
+import org.fasttrackit.healthcareapp.transfer.appointment.GetAppointmentRequest;
+import org.fasttrackit.healthcareapp.transfer.bt.GetBTRequest;
 import org.fasttrackit.healthcareapp.transfer.bt.SaveBTRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -32,6 +36,12 @@ public class BTController {
     public ResponseEntity<BT> getBT(@PathVariable long id) {
         BT bt = btService.getBT(id);
         return ResponseEntity.ok(bt);
+    }
+
+    @GetMapping
+    public List<BT> getBTs(@RequestBody @Valid GetBTRequest getBTRequest) {
+        List trimiteri = btService.getBilete(getBTRequest);
+        return trimiteri;
     }
 
     @PutMapping

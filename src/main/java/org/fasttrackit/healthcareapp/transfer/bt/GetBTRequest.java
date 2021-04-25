@@ -1,19 +1,10 @@
-package org.fasttrackit.healthcareapp.domain;
+package org.fasttrackit.healthcareapp.transfer.bt;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.sql.Date;
 
-@Entity
-@Table(name = "bt")
-public class BT {
+public class GetBTRequest {
 
-    @Id
-    @GeneratedValue
     private long id;
-
     private Date data_trimitere;
     private String judet;
     private String localitate;
@@ -106,7 +97,7 @@ public class BT {
 
     @Override
     public String toString() {
-        return "BT{" +
+        return "GetBTRequest{" +
                 "id=" + id +
                 ", data_trimitere=" + data_trimitere +
                 ", judet='" + judet + '\'' +

@@ -22,8 +22,8 @@ public class Person {
     private int apartament;
     private String tip;
 
-    @OneToMany(mappedBy = "personcnp", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Appointment> appointments = new HashSet<>();
+    //@OneToMany(mappedBy = "personcnp", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //private Set<Appointment> appointments = new HashSet<>();
 
     public long getCnp() {
         return cnp;
@@ -113,13 +113,13 @@ public class Person {
         this.tip = tip;
     }
 
-    public Set<Appointment> getAppointments() {
-        return appointments;
-    }
+    //public Set<Appointment> getAppointments() {
+     //   return appointments;
+    //}
 
-    public void setAppointments(Set<Appointment> appointments) {
-        this.appointments = appointments;
-    }
+    //public void setAppointments(Set<Appointment> appointments) {
+      //  this.appointments = appointments;
+    //}
 
     @Override
     public String toString() {
@@ -155,8 +155,7 @@ public class Person {
         if (localitate != null ? !localitate.equals(person.localitate) : person.localitate != null) return false;
         if (strada != null ? !strada.equals(person.strada) : person.strada != null) return false;
         if (bloc != null ? !bloc.equals(person.bloc) : person.bloc != null) return false;
-        if (tip != null ? !tip.equals(person.tip) : person.tip != null) return false;
-        return appointments != null ? appointments.equals(person.appointments) : person.appointments == null;
+        return tip != null ? tip.equals(person.tip) : person.tip == null;
     }
 
     @Override
@@ -172,7 +171,6 @@ public class Person {
         result = 31 * result + etaj;
         result = 31 * result + apartament;
         result = 31 * result + (tip != null ? tip.hashCode() : 0);
-        result = 31 * result + (appointments != null ? appointments.hashCode() : 0);
         return result;
     }
 }

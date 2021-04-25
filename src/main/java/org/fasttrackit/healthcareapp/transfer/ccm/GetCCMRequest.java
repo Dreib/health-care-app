@@ -1,17 +1,9 @@
-package org.fasttrackit.healthcareapp.domain;
+package org.fasttrackit.healthcareapp.transfer.ccm;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.sql.Date;
 
-@Entity
-@Table(name = "ccm")
-public class CCM {
+public class GetCCMRequest {
 
-    @Id
-    @GeneratedValue
     private long id;
 
     private long cnp;
@@ -71,7 +63,7 @@ public class CCM {
 
     @Override
     public String toString() {
-        return "CCM{" +
+        return "GetCCMRequest{" +
                 "id=" + id +
                 ", cnp=" + cnp +
                 ", serie='" + serie + '\'' +

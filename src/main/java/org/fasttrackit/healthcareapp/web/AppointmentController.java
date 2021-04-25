@@ -1,15 +1,21 @@
 package org.fasttrackit.healthcareapp.web;
 
 import org.fasttrackit.healthcareapp.domain.Appointment;
+import org.fasttrackit.healthcareapp.domain.Person;
 import org.fasttrackit.healthcareapp.service.AppointmentService;
+import org.fasttrackit.healthcareapp.transfer.appointment.AppointmentResponse;
 import org.fasttrackit.healthcareapp.transfer.appointment.GetAppointmentRequest;
 import org.fasttrackit.healthcareapp.transfer.appointment.SaveAppointmentRequest;
+import org.fasttrackit.healthcareapp.transfer.person.GetPersonsRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -29,10 +35,16 @@ public class AppointmentController {
         return new ResponseEntity<>(appointment, HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<Appointment> getAppointment(@RequestBody @Valid GetAppointmentRequest request) {
-        Appointment appointment = appointmentService.getAppointment(request.getPersoncnp());
+    @GetMapping("/{personcnp}")
+    public ResponseEntity<Appointment> getAppointment(@PathVariable long personcnp) {
+        Appointment appointment = appointmentService.getAppointment(personcnp);
         return ResponseEntity.ok(appointment);
+    }
+
+    @GetMapping
+    public List<Appointment> getAppointments(GetAppointmentRequest getAppointmentRequest) {
+        List appointments = appointmentService.getAppointments(getAppointmentRequest);
+        return appointments;
     }
 
     @PutMapping

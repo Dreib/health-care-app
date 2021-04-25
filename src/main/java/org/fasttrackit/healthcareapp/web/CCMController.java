@@ -1,7 +1,10 @@
 package org.fasttrackit.healthcareapp.web;
 
+import org.fasttrackit.healthcareapp.domain.BT;
 import org.fasttrackit.healthcareapp.domain.CCM;
 import org.fasttrackit.healthcareapp.service.CCMService;
+import org.fasttrackit.healthcareapp.transfer.bt.GetBTRequest;
+import org.fasttrackit.healthcareapp.transfer.ccm.GetCCMRequest;
 import org.fasttrackit.healthcareapp.transfer.ccm.SaveCCMRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -32,6 +36,12 @@ public class CCMController {
     public ResponseEntity<CCM> getCCM(@PathVariable long id) {
         CCM ccm = ccmService.getCCM(id);
         return ResponseEntity.ok(ccm);
+    }
+
+    @GetMapping
+    public List<BT> getCCMs(@RequestBody @Valid GetCCMRequest getCCMRequest) {
+        List concedii = ccmService.getConcedii(getCCMRequest);
+        return concedii;
     }
 
     @PutMapping

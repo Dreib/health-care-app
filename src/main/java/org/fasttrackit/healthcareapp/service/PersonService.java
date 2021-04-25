@@ -13,6 +13,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class PersonService {
@@ -59,12 +61,10 @@ public class PersonService {
         return personFound;
     }
 
-//
-//    public Page<Person> getPersons(GetPersonsRequest request, Pageable pageable) {
-//        LOGGER.info("Retrieving persons {}", request);
-//
-//        return personRepository.findPersonByCnp();
-//    }
+    public List<Person> getPersons(GetPersonsRequest request) {
+        LOGGER.info("Retrieving persons {}", request);
+        return personRepository.findAll();
+    }
 
     public Person updatePerson(SavePersonRequest request) {
         LOGGER.info("Updating person {}: {}", request.getCnp(), request);

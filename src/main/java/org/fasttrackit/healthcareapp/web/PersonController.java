@@ -1,7 +1,9 @@
 package org.fasttrackit.healthcareapp.web;
 
+import io.swagger.models.Response;
 import org.fasttrackit.healthcareapp.domain.Person;
 import org.fasttrackit.healthcareapp.service.PersonService;
+import org.fasttrackit.healthcareapp.transfer.person.GetPersonsRequest;
 import org.fasttrackit.healthcareapp.transfer.person.SavePersonRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -32,6 +35,12 @@ public class PersonController {
     public ResponseEntity<Person> getPerson(@PathVariable long cnp) {
         Person person = personService.getPerson(cnp);
         return ResponseEntity.ok(person);
+    }
+
+    @GetMapping
+    public List<Person> getPersons(GetPersonsRequest getPersonsRequest) {
+        List persons = personService.getPersons(getPersonsRequest);
+        return persons;
     }
 
     @PutMapping
