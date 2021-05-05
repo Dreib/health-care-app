@@ -1,9 +1,7 @@
 package org.fasttrackit.healthcareapp.web;
 
-import org.fasttrackit.healthcareapp.domain.BT;
 import org.fasttrackit.healthcareapp.domain.CCM;
 import org.fasttrackit.healthcareapp.service.CCMService;
-import org.fasttrackit.healthcareapp.transfer.bt.GetBTRequest;
 import org.fasttrackit.healthcareapp.transfer.ccm.GetCCMRequest;
 import org.fasttrackit.healthcareapp.transfer.ccm.SaveCCMRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +37,8 @@ public class CCMController {
     }
 
     @GetMapping
-    public List<BT> getCCMs(@RequestBody @Valid GetCCMRequest getCCMRequest) {
-        List concedii = ccmService.getConcedii(getCCMRequest);
+    public List<CCM> getConcedii(@RequestBody @Valid GetCCMRequest request) {
+        List concedii = ccmService.getConcedii(request);
         return concedii;
     }
 

@@ -2,20 +2,15 @@ package org.fasttrackit.healthcareapp.service;
 
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.fasttrackit.healthcareapp.domain.Appointment;
-import org.fasttrackit.healthcareapp.domain.Person;
 import org.fasttrackit.healthcareapp.persistence.AppointmentRepository;
-import org.fasttrackit.healthcareapp.transfer.appointment.AppointmentResponse;
 import org.fasttrackit.healthcareapp.transfer.appointment.GetAppointmentRequest;
 import org.fasttrackit.healthcareapp.transfer.appointment.SaveAppointmentRequest;
-import org.fasttrackit.healthcareapp.transfer.person.GetPersonsRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -75,18 +70,6 @@ public class AppointmentService {
     public void deleteAppointment(long id) {
         LOGGER.info("Removing appointment {}", id);
         appointmentRepository.deleteById(id);
-    }
-
-    private AppointmentResponse mapAppointmentResponse(Appointment appointment) {
-        AppointmentResponse appointmentResponse = new AppointmentResponse();
-
-        appointmentResponse.setId(appointment.getId());
-        appointmentResponse.setPersoncnp(appointment.getPersoncnp());
-        appointmentResponse.setData(appointment.getData());
-        appointmentResponse.setOra(appointment.getOra());
-        appointmentResponse.setObservatie(appointment.getObservatie());
-
-        return appointmentResponse;
     }
 
 }

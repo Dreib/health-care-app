@@ -1,9 +1,7 @@
 package org.fasttrackit.healthcareapp.web;
 
-import org.fasttrackit.healthcareapp.domain.Appointment;
 import org.fasttrackit.healthcareapp.domain.BT;
 import org.fasttrackit.healthcareapp.service.BTService;
-import org.fasttrackit.healthcareapp.transfer.appointment.GetAppointmentRequest;
 import org.fasttrackit.healthcareapp.transfer.bt.GetBTRequest;
 import org.fasttrackit.healthcareapp.transfer.bt.SaveBTRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +37,8 @@ public class BTController {
     }
 
     @GetMapping
-    public List<BT> getBTs(@RequestBody @Valid GetBTRequest getBTRequest) {
-        List trimiteri = btService.getBilete(getBTRequest);
+    public List<BT> getBilete(@RequestBody(required = false) @Valid GetBTRequest request) {
+        List trimiteri = btService.getBilete(request);
         return trimiteri;
     }
 

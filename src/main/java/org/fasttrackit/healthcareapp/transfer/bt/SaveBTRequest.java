@@ -4,39 +4,32 @@ import java.sql.Date;
 
 public class SaveBTRequest {
 
-    private long id;
-    private Date data_trimitere;
+    private int id;
+
+    private Date trimitere;
     private String judet;
     private String localitate;
-    private String unitate_sanitara;
+    private String unitate;
     private long cnp;
     private String catre;
-    private String diagnostic_prezumtiv;
-    private String motivul_trimiterii;
-    private String investigatii_tratamente;
+    private String diagnostic;
+    private String motiv;
+    private String investigatii;
 
     public long getId() {
         return id;
     }
 
-    public void setBt_id(long bt_id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getCnp() {
-        return cnp;
+    public Date getTrimitere() {
+        return trimitere;
     }
 
-    public void setCnp(long cnp) {
-        this.cnp = cnp;
-    }
-
-    public Date getData_trimitere() {
-        return data_trimitere;
-    }
-
-    public void setData_trimitere(Date data_trimitere) {
-        this.data_trimitere = data_trimitere;
+    public void setTrimitere(Date trimitere) {
+        this.trimitere = trimitere;
     }
 
     public String getJudet() {
@@ -55,12 +48,20 @@ public class SaveBTRequest {
         this.localitate = localitate;
     }
 
-    public String getUnitate_sanitara() {
-        return unitate_sanitara;
+    public String getUnitate() {
+        return unitate;
     }
 
-    public void setUnitate_sanitara(String unitate_sanitara) {
-        this.unitate_sanitara = unitate_sanitara;
+    public void setUnitate(String unitate) {
+        this.unitate = unitate;
+    }
+
+    public long getCnp() {
+        return cnp;
+    }
+
+    public void setCnp(long cnp) {
+        this.cnp = cnp;
     }
 
     public String getCatre() {
@@ -71,43 +72,43 @@ public class SaveBTRequest {
         this.catre = catre;
     }
 
-    public String getDiagnostic_prezumtiv() {
-        return diagnostic_prezumtiv;
+    public String getDiagnostic() {
+        return diagnostic;
     }
 
-    public void setDiagnostic_prezumtiv(String diagnostic_prezumtiv) {
-        this.diagnostic_prezumtiv = diagnostic_prezumtiv;
+    public void setDiagnostic(String diagnostic) {
+        this.diagnostic = diagnostic;
     }
 
-    public String getMotivul_trimiterii() {
-        return motivul_trimiterii;
+    public String getMotiv() {
+        return motiv;
     }
 
-    public void setMotivul_trimiterii(String motivul_trimiterii) {
-        this.motivul_trimiterii = motivul_trimiterii;
+    public void setMotiv(String motiv) {
+        this.motiv = motiv;
     }
 
-    public String getInvestigatii_tratamente() {
-        return investigatii_tratamente;
+    public String getInvestigatii() {
+        return investigatii;
     }
 
-    public void setInvestigatii_tratamente(String investigatii_tratamente) {
-        this.investigatii_tratamente = investigatii_tratamente;
+    public void setInvestigatii(String investigatii) {
+        this.investigatii = investigatii;
     }
 
     @Override
     public String toString() {
         return "SaveBTRequest{" +
                 "id=" + id +
-                ", data_trimitere=" + data_trimitere +
+                ", trimitere=" + trimitere +
                 ", judet='" + judet + '\'' +
                 ", localitate='" + localitate + '\'' +
-                ", unitate_sanitara='" + unitate_sanitara + '\'' +
+                ", unitate='" + unitate + '\'' +
                 ", cnp=" + cnp +
                 ", catre='" + catre + '\'' +
-                ", diagnostic_prezumtiv='" + diagnostic_prezumtiv + '\'' +
-                ", motivul_trimiterii='" + motivul_trimiterii + '\'' +
-                ", investigatii_tratamente='" + investigatii_tratamente + '\'' +
+                ", diagnostic='" + diagnostic + '\'' +
+                ", motiv='" + motiv + '\'' +
+                ", investigatii='" + investigatii + '\'' +
                 '}';
     }
 }

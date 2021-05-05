@@ -1,15 +1,10 @@
 package org.fasttrackit.healthcareapp.web;
 
 import org.fasttrackit.healthcareapp.domain.Appointment;
-import org.fasttrackit.healthcareapp.domain.Person;
 import org.fasttrackit.healthcareapp.service.AppointmentService;
-import org.fasttrackit.healthcareapp.transfer.appointment.AppointmentResponse;
 import org.fasttrackit.healthcareapp.transfer.appointment.GetAppointmentRequest;
 import org.fasttrackit.healthcareapp.transfer.appointment.SaveAppointmentRequest;
-import org.fasttrackit.healthcareapp.transfer.person.GetPersonsRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

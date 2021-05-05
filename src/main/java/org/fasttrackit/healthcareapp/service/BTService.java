@@ -3,7 +3,6 @@ package org.fasttrackit.healthcareapp.service;
 import org.fasttrackit.healthcareapp.domain.BT;
 import org.fasttrackit.healthcareapp.exception.ResourceNotFoundException;
 import org.fasttrackit.healthcareapp.persistence.BTRepository;
-import org.fasttrackit.healthcareapp.transfer.appointment.GetAppointmentRequest;
 import org.fasttrackit.healthcareapp.transfer.bt.GetBTRequest;
 import org.fasttrackit.healthcareapp.transfer.bt.SaveBTRequest;
 import org.slf4j.Logger;
@@ -12,7 +11,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -31,15 +29,15 @@ public class BTService {
         BT bt = new BT();
 
         bt.setId(request.getId());
-        bt.setData_trimitere(request.getData_trimitere());
+        bt.setTrimitere(request.getTrimitere());
         bt.setJudet(request.getJudet());
         bt.setLocalitate(request.getLocalitate());
-        bt.setUnitate_sanitara(request.getUnitate_sanitara());
+        bt.setUnitate(request.getUnitate());
         bt.setCnp(request.getCnp());
         bt.setCatre(request.getCatre());
-        bt.setDiagnostic_prezumtiv(request.getDiagnostic_prezumtiv());
-        bt.setMotivul_trimiterii(request.getMotivul_trimiterii());
-        bt.setInvestigatii_tratamente(request.getInvestigatii_tratamente());
+        bt.setDiagnostic(request.getDiagnostic());
+        bt.setMotiv(request.getMotiv());
+        bt.setInvestigatii(request.getInvestigatii());
 
         return btRepository.save(bt);
     }

@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public class CCMService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(BTService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CCMService.class);
 
     private final CCMRepository ccmRepository;
 
@@ -46,8 +46,8 @@ public class CCMService {
                 .orElseThrow(() -> new ResourceNotFoundException("User " + id + " does not exist."));
     }
 
-    public List<CCM> getConcedii(GetCCMRequest getCCMRequest) {
-        LOGGER.info("Retrieving concedii {}", getCCMRequest);
+    public List<CCM> getConcedii(GetCCMRequest request) {
+        LOGGER.info("Retrieving concedii {}", request);
         return ccmRepository.findAll();
     }
 
