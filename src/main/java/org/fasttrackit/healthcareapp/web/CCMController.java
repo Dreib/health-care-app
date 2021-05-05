@@ -37,7 +37,7 @@ public class CCMController {
     }
 
     @GetMapping
-    public List<CCM> getConcedii(@RequestBody @Valid GetCCMRequest request) {
+    public List<CCM> getConcedii(@RequestBody(required = false) @Valid GetCCMRequest request) {
         List concedii = ccmService.getConcedii(request);
         return concedii;
     }
