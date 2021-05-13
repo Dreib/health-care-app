@@ -42,7 +42,7 @@ public class AppointmentController {
         return appointments;
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Appointment> updateAppointment(@RequestBody @Valid SaveAppointmentRequest request) {
         Appointment appointment = appointmentService.updateAppointment(request);
         return ResponseEntity.ok(appointment);
